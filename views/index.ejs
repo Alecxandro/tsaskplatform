@@ -1,0 +1,15 @@
+<%- include('partials/header.ejs') %>
+<body>
+    <%- include('partials/navbar.ejs') %>
+    <br>
+    <div class="container">
+        <h2>Latest from users...</h3>
+            <hr>
+        <% question.forEach(function(p) { %>
+            <p><%=   p.title  %></p>   <br>
+               
+       <% }) %>
+    </div>
+    
+</body>
+</html>
