@@ -1,0 +1,21 @@
+<%- include('partials/header.ejs') %>
+<body>
+    <%- include('partials/navbar.ejs') %><br>
+
+    <div class="container">
+        <div class="card">
+            <div class="card-header"><h4 class="display-4"><%= question.title %></h4> </div>
+            <div class="card-body"><%= question.description %> </div>
+            <div class="card-footer">
+                <h6 class="display-6">Latest answers...</h6>
+                <hr>
+
+                <form action="/sendanswer" method="post">
+                    <textarea name="answerDescription" id="" cols="30" rows="05" class="form-control" placeholder='type your answer here...'></textarea><br>
+                    <input type="hidden" name="questionId" value="<%= question.id %> ">
+                    <button class="btn btn-success">Send Answer</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>

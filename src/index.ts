@@ -30,6 +30,28 @@ route.get("/ask", async (req: Request, res: Response) => {
   res.render("ask");
 });
 
+route.get("/question/:id", async (req: Request, res: Response) => {
+  const {id} = req.params;
+
+  const question = await prisma.questions.findUnique({
+    where: {id: Number(id)},
+  })
+
+  if (question !== undefined) {
+    const answer = await prisma.answers.findMany({
+        where: {id: Number(id)},
+        orderBy: {id: 'desc'}
+    })
+
+    res.render("question", {
+      question: question,
+      answer: answer,
+    })
+  }
+
+  
+})
+
 route.post("/savequestion", async (req: Request, res: Response) => {
   const { questionTitle, questionDescription } = req.body;
 

@@ -3,13 +3,31 @@
     <%- include('partials/navbar.ejs') %>
     <br>
     <div class="container">
-        <h2>Latest from users...</h3>
+        <h5 class="display-5">Latest from users...</h5>
             <hr>
         <% question.forEach(function(p) { %>
-            <p><%=   p.title  %></p>   <br>
+            <!-- <a href="/question/<%= p.id %> "> <%= p.title %> </a>  <br> -->
                
+            <div class="accordion<%= p.id %>" id="accordionExample<%= p.id %>">
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingOne">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne<%= p.id %>" aria-expanded="true" aria-controls="collapseOne">
+                      <strong><%= p.title %> </strong>
+                    </button>
+                  </h2>
+                  <div id="collapseOne<%= p.id %>" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample<%= p.id %>"">
+                    <div class="accordion-body">
+                      <a href="/question/<%= p.id %> "><%= p.description %> </a>
+                    </div>
+                  </div>
+                </div>
+            </div>
+
        <% }) %>
-    </div>
+
+       
+
+</div>
     
 </body>
 </html>
